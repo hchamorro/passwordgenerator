@@ -67,24 +67,48 @@ function chanceSymbol(arr) {
   return Math.floor(Math.random() * arr.length);
 }
 
-function showNewPassword() {
-  for (let i = 0; i < pwLen; i++) {
-    let addNum = chanceSymbol(number);
-    let addLetter = chanceSymbol(letter);
-    let addChar = chanceSymbol(specialCharacter);
-    let symbolindex = ranCharacter;
-    if (i === ranCharacter && pwChar === true) {
-      pw = pw + specialCharacter[i];
-      console.log(i);
-    }
-    if (i === ranNumber && pwNum === true) {
-      pw = pw + number[i];
-    } else {
-      pw = pw + letter[addLetter];
-    }
-  }
+// function showNewPassword() {
+//   for (let i = 1; i < pwLen; i++) {
+//     let addNum = chanceSymbol(number);
+//     let addLetter = chanceSymbol(letter);
+//     let addChar = chanceSymbol(specialCharacter);
+//     let symbolindex = ranCharacter;
+//     if (i === ranCharacter && pwChar === true) {
+//       pw = pw + specialCharacter[addChar];
+//       console.log(i);
+//     }
+//     if (i === ranNumber && pwNum === true) {
+//       pw = pw + number[addNum];
+//     } else {
+//       pw = pw + letter[addLetter];
+//     }
+//   }
 
-  pwBox.innerHTML = pw;
+//   pwBox.innerHTML = pw;
+// }
+
+function showNewPassword() {
+  // if (pwChar === true && pwNum === true) {
+  //   for (let i = 0; i < pwLen; i++) {
+  //     let addNum = chanceSymbol(number);
+  //     let addLetter = chanceSymbol(letter);
+  //     let addChar = chanceSymbol(specialCharacter);
+  //     pw = pw + number[addNum] + letter[addLetter] + specialCharacter[addChar];
+  //   }
+  // } else if (pwNum === true) {
+  //   for (let i = 0; i < pwLen; i++) {
+  //     let addNum = chanceSymbol(number);
+  //     let addLetter = chanceSymbol(letter);
+  //     pw = pw + number[addNum] + letter[addLetter];
+  //   }
+  // } else {
+  //   for (let i = 0; i < pwLen; i++) {
+  //     let addLetter = chanceSymbol(letter);
+  //     pw = pw + letter[addLetter];
+  //   }
+  // }
+  var trimmedString = pw.substring(0, pwLen);
+  pwBox.innerHTML = trimmedString;
 }
 
 function copyClipboard() {

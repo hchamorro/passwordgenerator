@@ -60,26 +60,26 @@ let pwLen = prompt("How long do you want your password?");
 let pwNum = confirm("Do you want a numbers?");
 let pwChar = confirm("Do you want a special character?");
 
+let ranCharacter = Math.floor(Math.random() * specialCharacter.length);
+let ranNumber = Math.floor(Math.random() * number.length);
+let ranLetter = Math.floor(Math.random() * letter.length);
 function chanceSymbol(arr) {
   return Math.floor(Math.random() * arr.length);
 }
+
 function showNewPassword() {
-  if (pwChar === true && pwNum === true) {
-    for (let i = 0; i < pwLen; i++) {
-      let addNum = chanceSymbol(number);
-      let addLetter = chanceSymbol(letter);
-      let addChar = chanceSymbol(specialCharacter);
-      pw = pw + number[addNum] + letter[addLetter] + specialCharacter[addChar];
+  for (let i = 0; i < pwLen; i++) {
+    let addNum = chanceSymbol(number);
+    let addLetter = chanceSymbol(letter);
+    let addChar = chanceSymbol(specialCharacter);
+    let symbolindex = ranCharacter;
+    if (i === ranCharacter && pwChar === true) {
+      pw = pw + specialCharacter[i];
+      console.log(i);
     }
-  } else if (pwNum === true) {
-    for (let i = 0; i < pwLen; i++) {
-      let addNum = chanceSymbol(number);
-      let addLetter = chanceSymbol(letter);
-      pw = pw + number[addNum] + letter[addLetter];
-    }
-  } else {
-    for (let i = 0; i < pwLen; i++) {
-      let addLetter = chanceSymbol(letter);
+    if (i === ranNumber && pwNum === true) {
+      pw = pw + number[i];
+    } else {
       pw = pw + letter[addLetter];
     }
   }

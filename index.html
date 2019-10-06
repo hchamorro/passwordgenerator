@@ -4,17 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./style.css" type="text/css" />
   </head>
   <body>
-    <!-- box to show password-->
-    <div id="pwBox">password</div>
-    <!-- button to geneerate -->
-    <button onclick="showNewPassword()">generate</button>
-    <!-- button copy to clipboard -->
+    <div class="all">
+      <section class="topsection">
+        <h1 class="top">Build a Secure Passord</h1>
+      </section>
+      <section>
+        <!-- box to show password-->
+        <div class="pwBox" id="pwBox">password</div>
+        <!-- button to geneerate -->
+        <div class="btnArea">
+          <button onclick="showNewPassword()">Generate</button>
+          <!-- button copy to clipboard -->
 
-    <button onclick="copyClipboard()">Copy Password</button>
+          <button onclick="copyClipboard()">Copy Password</button>
+        </div>
+      </section>
+    </div>
+
     <!-- external js -->
+
     <script src="./app.js"></script>
   </body>
 </html>

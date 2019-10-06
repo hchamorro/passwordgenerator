@@ -1,0 +1,25 @@
+.all {
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: max-content;
+  padding: 15px;
+}
+
+.btnArea {
+  display: flex;
+  justify-content: space-evenly;
+}
+.topsection {
+  text-align: center;
+}
+
+.top {
+}
+
+.pwBox {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}

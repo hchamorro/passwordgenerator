@@ -53,60 +53,48 @@ let letter = [
   "Y",
   "Z"
 ];
-let specialCharacter = ["!", "#", "$", "&", "*"];
+let specialCharacter = ["!", "#", "$", "&", "*", "%", "^", "*"];
 let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let pwLen = prompt("How long do you want your password?");
 let pwNum = confirm("Do you want a numbers?");
 let pwChar = confirm("Do you want a special character?");
 
-let ranCharacter = Math.floor(Math.random() * specialCharacter.length);
-let ranNumber = Math.floor(Math.random() * number.length);
-let ranLetter = Math.floor(Math.random() * letter.length);
 function chanceSymbol(arr) {
   return Math.floor(Math.random() * arr.length);
 }
 
-// function showNewPassword() {
-//   for (let i = 1; i < pwLen; i++) {
-//     let addNum = chanceSymbol(number);
-//     let addLetter = chanceSymbol(letter);
-//     let addChar = chanceSymbol(specialCharacter);
-//     let symbolindex = ranCharacter;
-//     if (i === ranCharacter && pwChar === true) {
-//       pw = pw + specialCharacter[addChar];
-//       console.log(i);
-//     }
-//     if (i === ranNumber && pwNum === true) {
-//       pw = pw + number[addNum];
-//     } else {
-//       pw = pw + letter[addLetter];
-//     }
-//   }
-
-//   pwBox.innerHTML = pw;
-// }
-
 function showNewPassword() {
-  // if (pwChar === true && pwNum === true) {
-  //   for (let i = 0; i < pwLen; i++) {
-  //     let addNum = chanceSymbol(number);
-  //     let addLetter = chanceSymbol(letter);
-  //     let addChar = chanceSymbol(specialCharacter);
-  //     pw = pw + number[addNum] + letter[addLetter] + specialCharacter[addChar];
-  //   }
-  // } else if (pwNum === true) {
-  //   for (let i = 0; i < pwLen; i++) {
-  //     let addNum = chanceSymbol(number);
-  //     let addLetter = chanceSymbol(letter);
-  //     pw = pw + number[addNum] + letter[addLetter];
-  //   }
-  // } else {
-  //   for (let i = 0; i < pwLen; i++) {
-  //     let addLetter = chanceSymbol(letter);
-  //     pw = pw + letter[addLetter];
-  //   }
-  // }
+  if (8 > pwLen > 128) {
+    alert("Password must be between 8 and 128 characters");
+    return;
+  }
+  if (pwChar === true && pwNum === true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addNum = chanceSymbol(number);
+      let addLetter = chanceSymbol(letter);
+      let addChar = chanceSymbol(specialCharacter);
+      pw = pw + number[addNum] + letter[addLetter] + specialCharacter[addChar];
+    }
+  } else if (pwNum === true && pwChar !== true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addNum = chanceSymbol(number);
+      let addLetter = chanceSymbol(letter);
+      pw = pw + number[addNum] + letter[addLetter];
+    }
+  } else if (pwChar === true && pwNum !== true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addChar = chanceSymbol(specialCharacter);
+      let addLetter = chanceSymbol(letter);
+      pw = pw + specialCharacter[addChar] + letter[addLetter];
+    }
+  } else {
+    for (let i = 0; i < pwLen; i++) {
+      let addLetter = chanceSymbol(letter);
+      pw = pw + letter[addLetter];
+    }
+  }
+
   var trimmedString = pw.substring(0, pwLen);
   pwBox.innerHTML = trimmedString;
 }

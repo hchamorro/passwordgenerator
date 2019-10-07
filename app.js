@@ -25,7 +25,11 @@ let letter = [
   "w",
   "x",
   "y",
-  "z",
+  "z"
+];
+let specialCharacter = ["!", "#", "$", "&", "*", "%", "^", "*"];
+let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+let capital = [
   "A",
   "B",
   "C",
@@ -53,13 +57,10 @@ let letter = [
   "Y",
   "Z"
 ];
-let specialCharacter = ["!", "#", "$", "&", "*", "%", "^", "*"];
-let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 let pwLen = prompt("How long do you want your password?");
 let pwNum = confirm("Do you want a numbers?");
 let pwChar = confirm("Do you want a special character?");
-
+let pwCap = confirm("Do you want capital letters?");
 function chanceSymbol(arr) {
   return Math.floor(Math.random() * arr.length);
 }
@@ -67,26 +68,67 @@ function chanceSymbol(arr) {
 function showNewPassword() {
   if (8 > pwLen > 128) {
     alert("Password must be between 8 and 128 characters");
-    return;
   }
-  if (pwChar === true && pwNum === true) {
+  if (pwChar === true && pwNum === true && pwCap === true) {
     for (let i = 0; i < pwLen; i++) {
       let addNum = chanceSymbol(number);
       let addLetter = chanceSymbol(letter);
       let addChar = chanceSymbol(specialCharacter);
-      pw = pw + number[addNum] + letter[addLetter] + specialCharacter[addChar];
+      let addCap = chanceSymbol(capital);
+      pw =
+        pw +
+        number[addNum] +
+        letter[addLetter] +
+        specialCharacter[addChar] +
+        capital[addCap] +
+        letter[addLetter] +
+        letter[addLetter];
     }
-  } else if (pwNum === true && pwChar !== true) {
+  } else if (pwChar === true && pwNum === true) {
     for (let i = 0; i < pwLen; i++) {
       let addNum = chanceSymbol(number);
       let addLetter = chanceSymbol(letter);
-      pw = pw + number[addNum] + letter[addLetter];
+      let addChar = chanceSymbol(specialCharacter);
+      pw =
+        pw +
+        letter[addLetter] +
+        number[addNum] +
+        specialCharacter[addChar] +
+        letter[addLetter];
     }
-  } else if (pwChar === true && pwNum !== true) {
+  } else if (pwNum === true && pwCap === true && pwChar !== true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addNum = chanceSymbol(number);
+      let addLetter = chanceSymbol(letter);
+      let addCap = chanceSymbol(capital);
+      pw = pw + number[addNum] + letter[addLetter] + capital[addCap];
+    }
+  } else if (pwChar === true && pwCap === true && pwNum !== true) {
     for (let i = 0; i < pwLen; i++) {
       let addChar = chanceSymbol(specialCharacter);
       let addLetter = chanceSymbol(letter);
-      pw = pw + specialCharacter[addChar] + letter[addLetter];
+      let addCap = chanceSymbol(capital);
+      pw = pw + specialCharacter[addChar] + letter[addLetter] + capital[addCap];
+    }
+  } else if (pwChar === true && pwCap !== true && pwNum !== true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addChar = chanceSymbol(specialCharacter);
+      let addLetter = chanceSymbol(letter);
+      pw =
+        pw + letter[addLetter] + specialCharacter[addChar] + letter[addLetter];
+    }
+  } else if (pwChar !== true && pwCap === true && pwNum !== true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addLetter = chanceSymbol(letter);
+      let addCap = chanceSymbol(capital);
+      pw = pw + letter[addLetter] + capital[addCap] + letter[addLetter];
+    }
+  } else if (pwChar !== true && pwCap !== true && pwNum === true) {
+    for (let i = 0; i < pwLen; i++) {
+      let addLetter = chanceSymbol(letter);
+      let addNum = chanceSymbol(number);
+
+      pw = pw + letter[addLetter] + number[addNum] + letter[addLetter];
     }
   } else {
     for (let i = 0; i < pwLen; i++) {
